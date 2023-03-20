@@ -18,7 +18,6 @@ int main()
     snake[0].setPosition(100, 100);
 
     srand(time(0));
-
     char snake_dir = 0;
     int counter = 0;
 
