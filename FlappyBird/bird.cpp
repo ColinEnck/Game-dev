@@ -26,7 +26,7 @@ int main()
     sf::Clock clock;
     sf::Time dt;
 
-    float dv = 0;
+    float velocity = 0;
 
     while (window.isOpen())
     {
@@ -38,15 +38,15 @@ int main()
         }
 
         dt = clock.restart();
-        dv -= dt.asMilliseconds();
+	velocity -= dt.asMilliseconds();
 
         // keyboard inputs
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             window.close();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-            dv += 3.125 * 19;
+            velocity += 3.125 * 19;
 
-        bird.move(sf::Vector2f(0.f, -(dv * dt.asSeconds())));
+        bird.move(sf::Vector2f(0.f, -(velocity * dt.asSeconds())));
 
         // drawing begins here
         window.clear();
