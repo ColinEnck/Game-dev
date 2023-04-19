@@ -1,20 +1,33 @@
+// INCOMPLETE
+
 fn main() {
     let mut board: [[u8; 9]; 9] = [[0; 9]; 9]; 
-    for n in 0..9 {
-        let mut guess: u8;
-        board[0][n] = loop {
-            let mut new_num = true;
-            guess = rng();
-            for val in board[0] {
-                if guess == val {
-                    new_num = false;
-                }
-            }
-            if new_num == true {break guess}
-        };
-    }
+    let key = set_key();
+    print_board(key);
+}
 
-    print_board(board);
+fn set_key() -> [[u8; 9]; 9] {
+    let mut key: [[u8; 9]; 9] = [[0; 9]; 9];
+    let mut guess: u8;
+    for n in 0..9 {
+        for i in 0..9 {
+            key[n][i] = loop {
+                let mut new_num = true;
+                guess = rng();
+                for j in 0..i {
+                    if guess == key[n][j] { new_num = false; }
+                }
+                // **this makes it break for some reason**
+                // for k in 0..n {
+                //     if guess == key[k][i] { new_num = false; }
+                // }
+                if new_num == true { break guess }
+            };
+            println!("I made it");
+        }
+        println!("I made it again");
+    }
+    return key;
 }
 
 fn rng() -> u8 {
